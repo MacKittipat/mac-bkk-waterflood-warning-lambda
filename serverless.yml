@@ -4,15 +4,10 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs20.x
+  region: ap-southeast-1
 
 functions:
   rateHandler:
     handler: index.run
     events:
-      # Invoke Lambda function every minute
-      - schedule: rate(1 minute)
-  cronHandler:
-    handler: index.run
-    events:
-      # Invoke Lambda function every 2nd minute from Mon-Fri
-      - schedule: cron(0/2 * ? * MON-FRI *)
+      - schedule: rate(3 hours)
